@@ -8,6 +8,7 @@ import UpdateCoffee from './component/UpdateCoffee';
 const router = createBrowserRouter([
   {
     path: "/",
+    loader:()=>fetch('http://localhost:5000/coffee'),
     element:<App></App>,
   },
   {
@@ -15,7 +16,8 @@ const router = createBrowserRouter([
     element:<AddCoffee></AddCoffee>,
   },
   {
-    path: "/UpdataCoffee",
+    path: "/UpdataCoffee/:id",
+    loader:({params})=>fetch(`http://localhost:5000/coffee/${params._id}`),
     element:<UpdateCoffee></UpdateCoffee>,
   },
 ]);
